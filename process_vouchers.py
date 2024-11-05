@@ -5,10 +5,12 @@ import json
 base_dir = os.getcwd()
 valid_vouchers_dir = os.path.join(base_dir, "ValidVouchers")
 invalid_vouchers_dir = os.path.join(base_dir, "InvalidVouchers")
+burned_vouchers_dir = os.path.join(base_dir, "BurnedVouchers")
 
 # Ensure output directories exist
 os.makedirs(valid_vouchers_dir, exist_ok=True)
 os.makedirs(invalid_vouchers_dir, exist_ok=True)
+os.makedirs(burned_vouchers_dir, exist_ok=True)
 
 # Load ceremony vouchers from JSON file
 with open("ceremony_vouchers.json", "r") as f:
