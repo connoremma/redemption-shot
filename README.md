@@ -101,7 +101,7 @@ Total balance: 123.000000000000 QUIL (Account 0x11111111111111111111111111111111
 ```
 Download the Voucher Consolidation script
 ```
-curl -O https://raw.githubusercontent.com/connoremma/redemption-shot/refs/heads/main/consolidate_vouchers.sh
+cd ~ && curl -O https://raw.githubusercontent.com/connoremma/redemption-shot/refs/heads/main/consolidate_vouchers.sh
 ```
 Open the script in a text editor and replace `0x_YOUR_ACCOUNT_ADDRESS` with the address you copied above. On most systems you can use `nano`.
 ```
