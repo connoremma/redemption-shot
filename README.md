@@ -39,25 +39,30 @@ Your home directory should look like this:
 Then go ahead and move your vouchers into the `quil_vouchers` folder.
 
 ### Remove Invalid Vouchers
-Move into your voucher directory: 
+Switch into and sort your voucher directory: 
 ```
-cd quil_vouchers
+cd quil_vouchers && \
+curl -O https://source.quilibrium.com/quilibrium/ceremonyclient/-/raw/main/node/execution/intrinsics/token/ceremony_vouchers.json && \
+curl -O https://raw.githubusercontent.com/connoremma/redemption-shot/refs/heads/main/process_vouchers.py && \
+python3 process_vouchers.py
 ```
-Download the list of valid vouchers:
-```
-curl https://source.quilibrium.com/quilibrium/ceremonyclient/-/raw/main/node/execution/intrinsics/token/ceremony_vouchers.json
-```
-
 
 ### Install the `jq` CLI tool:
 
-Ubuntu/WSL: 
+**Ubuntu/WSL:**
 ```
 sudo apt install jq
 ```
-MacOS: 
+**MacOS:** 
 ```
 brew install jq
 ```
 :bulb: If you don't have `brew`, get it here: https://brew.sh/
+
+# ❗❗❗ Note down your peerPrivKey
+Your node will be configured with an initial peer private key that will serve as the master address for receiving all of your QUIL tokens. 
+**Note it down somewhere safe:**
+```
+grep 'peerPrivKey:' /home/$USER/ceremonyclient/node/.config/config.yml | sed 's/peerPrivKey: //'
+```
 
