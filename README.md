@@ -76,3 +76,42 @@ Signature check passed
 gRPC not enabled, using light node
 Total balance: 123.000000000000 QUIL (Account 0x111111111111111111111111111111111111111111)
 ```
+Download the Voucher Consolidation script
+```
+curl -O https://raw.githubusercontent.com/connoremma/redemption-shot/refs/heads/main/consolidate_vouchers.sh
+```
+Open the script in a text editor and replace `0x_YOUR_ACCOUNT_ADDRESS` with the address you copied above. On most systems you can use `nano`.
+```
+nano consolidate_vouchers.sh
+```
+Make the script executable 
+```
+chmod +x consolidate_vouchers.sh
+```
+## 4. Run the Script
+You can tell the script how many vouchers you want to process by adding a number in case you don't want to bridge them all at once. Remember that each voucher contains 50 QUIL, so you're moving multiples of 50 at a time. This command will run the script once for a single voucher:
+```
+./consolidate_vouchers 1
+```
+The script should output something like this for each voucher successfully processed:
+```
+Processing voucher: quilhex1.hex
+Updating peerPrivKey to: 
+  peerPrivKey:
+Updated
+Retrieving account address...
+Balance output: Signature check passed
+gRPC not enabled, using light node
+Total balance: 0.000000000000 QUIL (Account 0x0000000000000000000000000000000000000000000000000000000000000000)
+Total balance: 50.000000000000 QUIL (Account 0x0000000000000000000000000000000000000000000000000000000000000000)
+Account address with nonzero balance: 0x0000000000000000000000000000000000000000000000000000000000000000
+Posting to bridge-layer for account address 0x0000000000000000000000000000000000000000000000000000000000000000
+Coin addresses with balance 50: 0x0000000000000000000000000000000000000000000000000000000000000000
+Coin addresses with nonzero balance: 0x0000000000000000000000000000000000000000000000000000000000000000
+Transferring 50 coins from 0x0000000000000000000000000000000000000000000000000000000000000000 to master account 0x0000000000000000000000000000000000000000000000000000000000000000...
+Signature check passed
+gRPC not enabled, using light node
+Moving quilhex1.hex to BurnedVouchers.
+Completed processing of voucher: quihex10.hex
+Script completed successfully. Processed 1 vouchers.
+```
